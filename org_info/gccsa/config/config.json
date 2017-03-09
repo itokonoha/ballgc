@@ -1,0 +1,14 @@
+{
+  "org": {
+    "org_symbol": "gccsa",
+    "header_logo": "gccsa_header.png",
+    "survey": {
+      "csbg": {
+      	"title" : "GCCSA Applciation",
+        "about_file": "about.txt",
+        "requirements_file": "requirements.txt",
+        "email": "norm@appointmentworks.net"
+      }
+    }
+  }
+}

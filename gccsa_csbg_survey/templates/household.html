@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load custom_tag %}
+{% load i18n %}
+
+{% block content %}
+<div class="content">
+	<p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
+	<form class="form-horizontal content-form" action="" method="post">
+	{% csrf_token %}
+	{{ wizard.management_form }}
+	{% if wizard.form.forms %}
+	{{ wizard.form.management_form }}
+
+	<h3>HouseholdInfo</h3><hr>
+	<h1>First name: {{ wizard.request }}</h1>
+	<div class="form-group">
+	{% for field in wizard.form %}
+		<div class="col-sm-6 devider">
+			<div class="col-sm-4">{{field.label_tag}}</div>
+			<div class="col-sm-8 input_field">{{field}}</div>
+		</div>
+		{% if field.name == 'assistance_child_support' %}
+			{{ "<!--" }}
+		{%endif%} 
+	{%endfor%}     
+	{{ "-->" }}
+	</div>
+
+	<h3 class="referral-info">Referral Info</h3><hr>
+	<div class = "row pad-lr15">
+	<h4>How did you learn about GCCSA services?</h4>
+	{% for field in wizard.form %}
+		{% if "hear" in field.name %}
+			<div class="col-sm-4">
+				{% if field|field_type == "CheckboxInput" %}
+					<p>{{field}}  {{field.label_tag}}</p>
+				{% else %}
+					<p>{{field.label_tag}} {{field}}</p>
+				{% endif %}
+			</div>
+		{% endif %}
+	{% endfor %}
+	</div>
+	<hr>
+
+	{% for field in wizard.form %}
+		{% if "headstart_client" in field.name %}
+			<div class = "row pad-lr15">
+				<h4 class = "col-md-10">{{field}} {{field.label_tag}}</h4>
+			</div>
+		{% endif %}
+	{% endfor %}
+	<hr>
+
+	{% for field in wizard.form %}
+		{% if "previous_client" in field.name %}
+			<div class = "row pad-lr15">
+				<h4 class = "col-md-8">Are you, or a Household Member a previous client of GCCSA? </h4>
+				<h4 class = "col-md-2">{{field}}</h4>
+			</div>
+		{% endif %}
+	{% endfor %}
+	
+	<hr>		
+	<div class = "row pad-lr15">
+	<h4 class = "">Indicate the situation and/or circumstances that led to you requesting GCCSA Services.</h4>
+	{% for field in wizard.form %}
+	{% if "reason" in field.name %}
+		{% if field|field_type == "CheckboxInput" %}
+		<div class="col-sm-4">
+			<p>{{field}}  {{field.label_tag}}</p>
+		</div>
+		{% else %}
+		<div class="col-sm-8">
+			<p>{{field.label_tag}} {{field}}</p>
+		</div>
+		{% endif %}				
+	{% endif %}
+	{% endfor %}
+	</div>
+
+	<div class = "row pad-lr15">
+		<h4 class = "">Other, please specify :</h4>
+		<hr>
+			<br>
+		<hr>
+			<br>
+		<hr>
+	</div>
+
+	<div class = "row pad-lr15">
+	<h4 class = "">GCCSA offers various services to address household needs through Case Management and referrals to Community Partners.</h4>
+	{% for field in wizard.form %}
+		{% if "other_services" in field.name %}
+			<div class="col-sm-4">
+				{% if field|field_type == "CheckboxInput" %}
+					<p>{{field}}  {{field.label_tag}}</p>
+				{% else %}
+					<p>{{field.label_tag}} {{field}}</p>
+				{% endif %}
+			</div>
+		{% endif %}
+	{% endfor %}
+	</div><hr>
+
+	<div class = "row pad-lr15">
+	{% for field in wizard.form %}
+		{% if "case_management" in field.name %}
+			<div class="col-sm-4">
+				{% if field|field_type == "CheckboxInput" %}
+					<p>{{field}}  {{field.label_tag}}</p>
+				{% else %}
+					<p>{{field.label_tag}} {{field}}</p>
+				{% endif %}
+			</div>
+		{% endif %}
+	{% endfor %}
+	</div>
+
+	{% else %}
+		{{ wizard.form }}
+	{% endif %}
+	<div class="household-btns-div">
+		{% if wizard.steps.prev %}
+			<button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "prev step" %}</button>
+			<button name="wizard_goto_step" type="submit" value="{{ wizard.steps.next }}">{% trans "next step" %}</button>
+		{% endif %}
+		<input type="submit" value="{% trans "submit" %}"/>
+	</div>
+</form>
+</div>
+{% endblock %}

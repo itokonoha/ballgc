@@ -1,0 +1,5 @@
+project: alston
+release: 0.5
+git id: $Format:%h$
+tag: $Format:%d$
+commit date: $Format:%ci$

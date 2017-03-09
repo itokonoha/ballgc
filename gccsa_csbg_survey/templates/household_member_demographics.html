@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load custom_tag %}
+{% load i18n %}
+
+{% block content %}
+<div class="content">
+<p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
+<form class="form-horizontal content-form" action="" method="post">
+	{% csrf_token %}
+	{{ wizard.management_form }}
+	{% if wizard.form.forms %}
+	{{ wizard.form.management_form }}
+
+	<h3>Add Members</h3><hr>
+	<div class="form-group">
+	{% for field in wizard.form %}
+		<div class="col-sm-6 devider">
+			<div class="col-sm-4">{{field.label_tag}}</div>
+			<div class="col-sm-8 input_field">{{field}}</div>
+		</div>
+	{% endfor %}
+	</div>
+
+	{% else %}
+		{{ wizard.form }}
+	{% endif %}
+	<div class="household-btns-div">
+		{% if wizard.steps.prev %}
+			<button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "prev step" %}</button>
+			<button name="wizard_goto_step" type="submit" value="{{ wizard.steps.next }}">{% trans "next step" %}</button>
+		{% endif %}
+		<input type="submit" value="{% trans "submit" %}"/>
+	</div>
+</form>
+</div>
+{% endblock %}

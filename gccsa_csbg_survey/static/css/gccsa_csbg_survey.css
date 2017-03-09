@@ -1,0 +1,127 @@
+/*All Pages*/
+.content{
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 30px;}
+
+.float-l{
+	float: left;}
+
+.float-r{
+	float: right;}
+
+/*Header*/
+header{
+	display: block;
+	margin: 0px 30px;
+	height: 85px;}
+
+.header-logo{
+	background-image: url('/static/img/gccsa_header.png');
+	background-size: 275px 85px;
+	width: 275px;
+	height: 85px;}
+
+.header-div-l{
+	margin-top: 25px;}
+
+.title-div{
+	text-align: center;
+	margin-bottom: 20px;
+	font-size: 26px;}
+
+.title{}
+
+/*About Page*/
+.about-ta, .requirements-ta{
+	width: 100%;
+	height: 400px;}
+
+.about-continue{
+	margin-right: 20px;
+	float: right;
+	margin-top: 20px;}
+
+/*Requirement Page*/
+.requirements-cb{
+	display: inline-block;}
+
+.submit-form{
+	width: 200px;
+	float: right;}
+
+.rcb-div{
+	width: 800px;
+	display: inline-block;}
+
+.understand-div{
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 2px;}
+
+.submit-btn{
+	float: right;}
+
+.submit-div{
+	margin: 20px 20px 0px;}
+
+.input_field > input {
+	width: 90%;}
+
+.input_field > select {
+	width: 45%;}
+
+.devider {
+	margin-bottom: 15px;
+	max-height: 32px;}
+
+.devider > div:first-child{
+	height: 32px;
+	display: table;}
+
+.devider > div > label{
+	vertical-align: middle;}
+
+.devider label{
+	margin-top: 5px;
+}
+
+.form-horizontal > h3 {
+	margin-bottom: 5px;}
+
+.bold {
+	font-weight: bold;}
+
+.aci-title{
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-top: 30px;
+	width: 100%;
+	float: left;}
+
+.continue-btn{
+	float: right;
+	margin-top: 20px;
+	margin-right: 20px;}
+
+.form-group{
+	margin-bottom: 80px !important;}
+
+/*Referral Info*/
+.pad-lr15{
+	padding-left: 15px;
+	padding-right: 15px;}
+
+.font-light > label{
+	font-weight: 100 !important;}
+
+.referral-info{}
+
+.household-btns{
+	align-items: right;}
+
+.household-btns-div{
+	width: 20%;
+	float: right;
+	margin-top: 20px;
+	margin-bottom: 40px;}
